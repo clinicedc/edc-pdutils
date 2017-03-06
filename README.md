@@ -1,3 +1,3 @@
 # edc-pdutils
 
-Using pandas with the Edc
+Use pandas with the Edc
