@@ -22,6 +22,7 @@ setup(
     long_description=README,
     zip_safe=False,
     keywords='django pandas edc',
+    install_requires=['sqlalchemy', 'pandas'],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
