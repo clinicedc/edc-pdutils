@@ -1,10 +1,15 @@
-# edc-pdutils
+|pypi| |travis| |coverage|
+
+edc-pdutils
+-----------
 
 Use pandas with the Edc
 
 
 To export Crf data, for example:
 
+.. code-block:: python
+    
     csv_path = '/Users/erikvw/Documents/ambition/export/'
     date_format = '%Y-%m-%d'
     sep = ','
@@ -30,6 +35,8 @@ To export Crf data, for example:
     
 To export INLINE data for any CRF configured with an inline, for example:
 
+.. code-block:: python
+    
     class MyDfHandler(CrfDfHandler):
         visit_tbl = 'ambition_subject_subjectvisit'
         registered_subject_tbl = 'edc_registration_registeredsubject'
@@ -50,3 +57,13 @@ To export INLINE data for any CRF configured with an inline, for example:
     sys.stdout.write('\n')
     exporter = MyCsvCrfInlineTablesExporter()
     exporter.to_csv(date_format=date_format, delimiter=sep)
+
+
+.. |pypi| image:: https://img.shields.io/pypi/v/edc-pdutils.svg
+    :target: https://pypi.python.org/pypi/edc-pdutils
+    
+.. |travis| image:: https://travis-ci.org/clinicedc/edc-pdutils.svg?branch=develop
+    :target: https://travis-ci.org/clinicedc/edc-pdutils
+    
+.. |coverage| image:: https://coveralls.io/repos/github/clinicedc/edc-pdutils/badge.svg?branch=develop
+    :target: https://coveralls.io/github/clinicedc/edc-pdutils?branch=develop
