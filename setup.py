@@ -22,7 +22,7 @@ setup(
     include_package_data=True,
     url='https://github.com/clinicedc/edc-pdutils',
     license='GPL license, see LICENSE',
-    description='bcpp.',
+    description='Use pandas with clinicedc/edc projects',
     long_description=README,
     zip_safe=False,
     keywords='django pandas edc',
