@@ -16,8 +16,6 @@ To export Crf data, for example:
 
     class MyDfHandler(CrfDfHandler):
         visit_tbl = 'ambition_subject_subjectvisit'
-        registered_subject_tbl = 'edc_registration_registeredsubject'
-        appointment_tbl = 'edc_appointment_appointment'
         exclude_columns = ['form_as_json', 'survival_status','last_alive_date',
                            'screening_age_in_years', 'registration_datetime',
                            'subject_type']
@@ -39,8 +37,6 @@ To export INLINE data for any CRF configured with an inline, for example:
     
     class MyDfHandler(CrfDfHandler):
         visit_tbl = 'ambition_subject_subjectvisit'
-        registered_subject_tbl = 'edc_registration_registeredsubject'
-        appointment_tbl = 'edc_appointment_appointment'
         exclude_columns = ['form_as_json', 'survival_status','last_alive_date',
                            'screening_age_in_years', 'registration_datetime',
                            'subject_type']
