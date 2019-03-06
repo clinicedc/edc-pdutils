@@ -11,7 +11,7 @@ with open(join(dirname(__file__), 'VERSION')) as f:
     VERSION = f.read()
 
 tests_require = [
-    'edc_appointment', 'edc-registration', 'edc-list-data']
+    'edc_appointment', 'edc-registration', 'edc-list-data', 'edc-offstudy']
 with open(join(dirname(abspath(__file__)), 'requirements.txt')) as f:
     for line in f:
         tests_require.append(line.strip())
