@@ -48,7 +48,7 @@ DEFAULT_SETTINGS = dict(
     BASE_DIR=base_dir,
     SITE_ID=10,
     ALLOWED_HOSTS=['localhost'],
-    ROOT_URLCONF=f'{app_name}.tests.urls',
+    ROOT_URLCONF=f'{app_name}.urls',
     STATIC_URL='/static/',
     INSTALLED_APPS=installed_apps,
     DATABASES={
@@ -85,6 +85,8 @@ DEFAULT_SETTINGS = dict(
 
     APP_NAME=app_name,
     EDC_BOOTSTRAP=3,
+    DASHBOARD_URL_NAMES={
+        "subject_dashboard_url": "edc_pdutils:subject_dashboard_url"},
 
     DEFAULT_FILE_STORAGE='inmemorystorage.InMemoryStorage',
     MIGRATION_MODULES=DisableMigrations(),
