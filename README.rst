@@ -1,7 +1,7 @@
-|pypi| |travis| |coverage|
+|pypi| |travis| |codecov| |downloads|
 
 edc-pdutils
------------
++++++++++++
 
 Use pandas with the Edc
 
@@ -55,11 +55,40 @@ To export INLINE data for any CRF configured with an inline, for example:
     exporter.to_csv(date_format=date_format, delimiter=sep)
 
 
+Settings
+========
+
+``EXPORT_FILENAME_TIMESTAMP_FORMAT``: True/False (Default: False)
+
+By default a timestamp of the current date is added as a suffix to CSV export filenames.
+
+By default a timestamp of format ``%Y%m%d%H%M%S`` is added.
+
+``EXPORT_FILENAME_TIMESTAMP_FORMAT`` may be set to an empty string or a valid format for ``strftime``.
+
+If ``EXPORT_FILENAME_TIMESTAMP_FORMAT`` is set to an empty string, "", a suffix is not added.
+
+For example:
+    
+.. code-block:: bash 
+    
+    # default
+    registered_subject_20190203112555.csv
+    
+    # EXPORT_FILENAME_TIMESTAMP_FORMAT = "%Y%m%d"
+    registered_subject_20190203.csv
+
+    # EXPORT_FILENAME_TIMESTAMP_FORMAT = ""
+    registered_subject.csv
+    
 .. |pypi| image:: https://img.shields.io/pypi/v/edc-pdutils.svg
     :target: https://pypi.python.org/pypi/edc-pdutils
     
 .. |travis| image:: https://travis-ci.org/clinicedc/edc-pdutils.svg?branch=develop
     :target: https://travis-ci.org/clinicedc/edc-pdutils
     
-.. |coverage| image:: https://coveralls.io/repos/github/clinicedc/edc-pdutils/badge.svg?branch=develop
-    :target: https://coveralls.io/github/clinicedc/edc-pdutils?branch=develop
+.. |codecov| image:: https://codecov.io/gh/clinicedc/edc-pdutils/branch/develop/graph/badge.svg
+  :target: https://codecov.io/gh/clinicedc/edc-pdutils
+
+.. |downloads| image:: https://pepy.tech/badge/edc-pdutils
+   :target: https://pepy.tech/project/edc-pdutils
