@@ -40,6 +40,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "edc_protocol.apps.AppConfig",
         "edc_identifier.apps.AppConfig",
         "edc_device.apps.AppConfig",
+        "edc_offstudy.apps.AppConfig",
         "edc_pdutils.apps.AppConfig",
     ],
     add_dashboard_middleware=True,
@@ -50,7 +51,7 @@ def main():
     if not settings.configured:
         settings.configure(**DEFAULT_SETTINGS)
     django.setup()
-    failures = DiscoverRunner(failfast=True).run_tests(
+    failures = DiscoverRunner(failfast=False).run_tests(
         [f'{app_name}.tests'])
     sys.exit(failures)
 
