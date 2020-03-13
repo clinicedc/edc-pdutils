@@ -84,8 +84,8 @@ For example:
 .. |pypi| image:: https://img.shields.io/pypi/v/edc-pdutils.svg
     :target: https://pypi.python.org/pypi/edc-pdutils
     
-.. |travis| image:: https://travis-ci.org/clinicedc/edc-pdutils.svg?branch=develop
-    :target: https://travis-ci.org/clinicedc/edc-pdutils
+.. |travis| image:: https://travis-ci.com/clinicedc/edc-pdutils.svg?branch=develop
+    :target: https://travis-ci.com/clinicedc/edc-pdutils
     
 .. |codecov| image:: https://codecov.io/gh/clinicedc/edc-pdutils/branch/develop/graph/badge.svg
   :target: https://codecov.io/gh/clinicedc/edc-pdutils
