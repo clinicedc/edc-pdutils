@@ -10,25 +10,24 @@ from edc_test_utils import DefaultTestSettings
 from os.path import abspath, dirname
 
 
-app_name = 'edc_pdutils'
+app_name = "edc_pdutils"
 base_dir = dirname(abspath(__file__))
 
 DEFAULT_SETTINGS = DefaultTestSettings(
     calling_file=__file__,
-    template_dirs=[os.path.join(
-        base_dir, app_name, "tests", "templates")],
+    template_dirs=[os.path.join(base_dir, app_name, "tests", "templates")],
     BASE_DIR=base_dir,
     APP_NAME=app_name,
-    #     DATABASES={
-    #         "default": {
-    #             "ENGINE": "django.db.backends.mysql",
-    #             "NAME": "edc1",
-    #             "USER": "",
-    #             "PASSWORD": "",
-    #             "HOST": "127.0.0.1",
-    #             "PORT": "3306",
-    #         }
-    #     },
+    # DATABASES={
+    #     "default": {
+    #         "ENGINE": "django.db.backends.mysql",
+    #         "NAME": "edc1",
+    #         "USER": "",
+    #         "PASSWORD": "",
+    #         "HOST": "127.0.0.1",
+    #         "PORT": "3306",
+    #     }
+    # },
     ETC_DIR=os.path.join(base_dir, app_name, "tests", "etc"),
     INSTALLED_APPS=[
         "django.contrib.admin",
@@ -42,6 +41,7 @@ DEFAULT_SETTINGS = DefaultTestSettings(
         "django_crypto_fields.apps.AppConfig",
         "django_revision.apps.AppConfig",
         "edc_appointment.apps.AppConfig",
+        "edc_crf.apps.AppConfig",
         "edc_metadata.apps.AppConfig",
         "edc_visit_tracking.apps.AppConfig",
         "edc_visit_schedule.apps.AppConfig",
@@ -62,9 +62,10 @@ def main():
     if not settings.configured:
         settings.configure(**DEFAULT_SETTINGS)
     django.setup()
-    tags = [t.split('=')[1] for t in sys.argv if t.startswith('--tag')]
+    tags = [t.split("=")[1] for t in sys.argv if t.startswith("--tag")]
     failures = DiscoverRunner(failfast=False, tags=tags).run_tests(
-        [f'{app_name}.tests'])
+        [f"{app_name}.tests"]
+    )
     sys.exit(failures)
 
 
