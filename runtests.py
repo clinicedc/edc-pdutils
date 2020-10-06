@@ -18,16 +18,16 @@ DEFAULT_SETTINGS = DefaultTestSettings(
     template_dirs=[os.path.join(base_dir, app_name, "tests", "templates")],
     BASE_DIR=base_dir,
     APP_NAME=app_name,
-    DATABASES={
-        "default": {
-            "ENGINE": "django.db.backends.mysql",
-            "NAME": "edc1",
-            "USER": "root",
-            "PASSWORD": "cc3721b",
-            "HOST": "127.0.0.1",
-            "PORT": "3306",
-        }
-    },
+    # DATABASES={
+    #     "default": {
+    #         "ENGINE": "django.db.backends.mysql",
+    #         "NAME": "edc1",
+    #         "USER": "",
+    #         "PASSWORD": "",
+    #         "HOST": "127.0.0.1",
+    #         "PORT": "3306",
+    #     }
+    # },
     ETC_DIR=os.path.join(base_dir, app_name, "tests", "etc"),
     INSTALLED_APPS=[
         "django.contrib.admin",
