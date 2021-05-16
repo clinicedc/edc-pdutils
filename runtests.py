@@ -12,12 +12,25 @@ from edc_test_utils import DefaultTestSettings
 app_name = "edc_pdutils"
 base_dir = dirname(abspath(__file__))
 
+DATABASES = None
+if os.getenv("GITHUB_WORKFLOW"):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": "github-actions",
+            "USER": "mysql",
+            "PASSWORD": "mysql",
+            "HOST": "localhost",
+            "PORT": "3306",
+        }
+    }
 DEFAULT_SETTINGS = DefaultTestSettings(
     calling_file=__file__,
     template_dirs=[os.path.join(base_dir, app_name, "tests", "templates")],
     BASE_DIR=base_dir,
     APP_NAME=app_name,
     ETC_DIR=os.path.join(base_dir, app_name, "tests", "etc"),
+    DATABASES=DATABASES,
     INSTALLED_APPS=[
         "django.contrib.admin",
         "django.contrib.auth",
