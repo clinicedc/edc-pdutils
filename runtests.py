@@ -17,11 +17,11 @@ if os.getenv("GITHUB_WORKFLOW"):
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.mysql",
-            "NAME": "github-actions",
-            "USER": "mysql",
+            "NAME": "test",
+            "USER": "root",
             "PASSWORD": "mysql",
-            "HOST": "localhost",
-            "PORT": "3306",
+            "HOST": "127.0.0.1",
+            "PORT": 3306,
         }
     }
 DEFAULT_SETTINGS = DefaultTestSettings(
