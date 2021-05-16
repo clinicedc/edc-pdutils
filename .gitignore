@@ -1,4 +1,4 @@
-django-crypto-fields
+django_crypto_fields
 # Swap
 [.-]*.s[a-v][a-z]
 [.-]*.sw[a-p]
