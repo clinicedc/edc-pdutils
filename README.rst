@@ -13,12 +13,13 @@ To export Crf data, for example:
     from edc_pdutils.df_exporters import CsvCrfTablesExporter
     from edc_pdutils.df_handlers import CrfDfHandler
 
+    app_label = 'ambition_subject'
     csv_path = '/Users/erikvw/Documents/ambition/export/'
     date_format = '%Y-%m-%d'
     sep = ','
 
     class MyDfHandler(CrfDfHandler):
-        visit_tbl = 'ambition_subject_subjectvisit'
+        visit_tbl = f'{app_label}_subjectvisit'
         exclude_columns = ['form_as_json', 'survival_status','last_alive_date',
                            'screening_age_in_years', 'registration_datetime',
                            'subject_type']
@@ -27,7 +28,7 @@ To export Crf data, for example:
         visit_column = 'subject_visit_id'
         datetime_fields = ['randomization_datetime']
         df_handler_cls = MyDfHandler
-        app_label = 'ambition_subject'
+        app_label = app_label
         export_folder = csv_path
 
     sys.stdout.write('\n')
