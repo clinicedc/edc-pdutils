@@ -10,6 +10,9 @@ To export Crf data, for example:
 
 .. code-block:: python
 
+    from edc_pdutils.df_exporters import CsvCrfTablesExporter
+    from edc_pdutils.df_handlers import CrfDfHandler
+
     csv_path = '/Users/erikvw/Documents/ambition/export/'
     date_format = '%Y-%m-%d'
     sep = ','
@@ -21,14 +24,14 @@ To export Crf data, for example:
                            'subject_type']
 
     class MyCsvCrfTablesExporter(CsvCrfTablesExporter):
-        visit_columns = ['subject_visit_id']
+        visit_column = 'subject_visit_id'
         datetime_fields = ['randomization_datetime']
         df_handler_cls = MyDfHandler
         app_label = 'ambition_subject'
         export_folder = csv_path
 
     sys.stdout.write('\n')
-    exporter = MyCsvCrfTablesExporter()
+    exporter = MyCsvCrfTablesExporter(export_folder=csv_path)
     exporter.to_csv(date_format=date_format, delimiter=sep)
 
 To export INLINE data for any CRF configured with an inline, for example:
