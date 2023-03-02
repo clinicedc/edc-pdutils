@@ -16,7 +16,8 @@ To export Crf data, for example:
     app_label = 'ambition_subject'
     csv_path = '/Users/erikvw/Documents/ambition/export/'
     date_format = '%Y-%m-%d'
-    sep = ','
+    sep = '|'
+    exclude_history_tables = True
 
     class MyDfHandler(CrfDfHandler):
         visit_tbl = f'{app_label}_subjectvisit'
@@ -32,7 +33,10 @@ To export Crf data, for example:
         export_folder = csv_path
 
     sys.stdout.write('\n')
-    exporter = MyCsvCrfTablesExporter(export_folder=csv_path)
+    exporter = MyCsvCrfTablesExporter(
+        export_folder=csv_path,
+        exclude_history_tables=exclude_history_tables
+    )
     exporter.to_csv(date_format=date_format, delimiter=sep)
 
 To export INLINE data for any CRF configured with an inline, for example:
@@ -57,6 +61,54 @@ To export INLINE data for any CRF configured with an inline, for example:
     sys.stdout.write('\n')
     exporter = MyCsvCrfInlineTablesExporter()
     exporter.to_csv(date_format=date_format, delimiter=sep)
+
+Using ``model_to_dataframe``
+++++++++++++++++++++++++++++
+
+.. code-block:: python
+
+    from edc_pdutils.model_to_dataframe import ModelToDataframe
+    from edc_pdutils.utils import get_model_names
+    from edc_pdutils.df_exporters.csv_exporter import CsvExporter
+
+    app_label = 'ambition_subject'
+    csv_path = '/Users/erikvw/Documents/ambition/export/'
+    date_format = '%Y-%m-%d'
+    sep = '|'
+    
+    for model_name in get_model_names(
+            app_label=app_label,
+            # with_columns=with_columns,
+            # without_columns=without_columns,
+        ):
+        m = ModelToDataframe(model=model_name)
+        exporter = CsvExporter(
+            data_label=model_name,
+            date_format=date_format,
+            delimiter=sep,
+            export_folder=csv_path,
+        )
+        exported = exporter.to_csv(dataframe=m.dataframe)
+        
+        
+        
+Using management command ``export_models_to_csv``
++++++++++++++++++++++++++++++++++++++++++++++++++
+
+To export as CSV where the delimiter is ``|``
+
+.. code-block:: python
+
+    python manage.py export_models_to_csv -a ambition_subject -p /ambition/export 
+    
+To export as STATA ``dta``
+
+.. code-block:: python
+
+    python manage.py export_models_to_csv -a ambition_subject -f stata -p /ambition/export 
+    
+
+
 
 
 Settings
