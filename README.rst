@@ -6,6 +6,25 @@ edc-pdutils
 Use pandas with the Edc
 
 
+Using the management command to export to CSV and STATA
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+To export as CSV where the delimiter is ``|``
+
+.. code-block:: python
+
+    python manage.py export_models_to_csv -a ambition_subject -p /ambition/export 
+    
+To export as STATA ``dta``
+
+.. code-block:: python
+
+    python manage.py export_models_to_csv -a ambition_subject -f stata -p /ambition/export 
+    
+
+Export manually
++++++++++++++++
+
 To export Crf data, for example:
 
 .. code-block:: python
@@ -92,21 +111,6 @@ Using ``model_to_dataframe``
         
         
         
-Using management command ``export_models_to_csv``
-+++++++++++++++++++++++++++++++++++++++++++++++++
-
-To export as CSV where the delimiter is ``|``
-
-.. code-block:: python
-
-    python manage.py export_models_to_csv -a ambition_subject -p /ambition/export 
-    
-To export as STATA ``dta``
-
-.. code-block:: python
-
-    python manage.py export_models_to_csv -a ambition_subject -f stata -p /ambition/export 
-    
 
 
 
