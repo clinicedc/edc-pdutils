@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import logging
 import os
+import tempfile
 from os.path import abspath, dirname
 
 from edc_test_utils import DefaultTestSettings, func_main
@@ -15,6 +16,7 @@ project_settings = DefaultTestSettings(
     BASE_DIR=base_dir,
     APP_NAME=app_name,
     ETC_DIR=os.path.join(base_dir, app_name, "tests", "etc"),
+    EDC_EXPORT_EXPORT_FOLDER=tempfile.mkdtemp(),
     INSTALLED_APPS=[
         "django.contrib.admin",
         "django.contrib.auth",
