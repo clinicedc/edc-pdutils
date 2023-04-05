@@ -13,14 +13,26 @@ To export as CSV where the delimiter is ``|``
 
 .. code-block:: python
 
-    python manage.py export_models_to_csv -a ambition_subject -p /ambition/export 
+    python manage.py export_models -a ambition_subject -p /ambition/export 
     
-To export as STATA ``dta``
+To export as STATA ``dta``:
 
 .. code-block:: python
 
-    python manage.py export_models_to_csv -a ambition_subject -f stata -p /ambition/export 
-    
+    python manage.py export_models -a ambition_subject -f stata -p /ambition/export 
+
+To export encrypted fields as well:
+
+.. code-block:: python
+
+    python manage.py export_models -a ambition_subject -f stata -p /ambition/export  --decrypt
+
+To export using a simpler filename that drops the tablename app_label prefix and does not include a datestamp suffix:
+
+.. code-block:: python
+
+    python manage.py export_models -a ambition_subject -f stata -p /ambition/export  --use_simple_filename
+
 
 Export manually
 +++++++++++++++
