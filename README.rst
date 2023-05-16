@@ -13,13 +13,13 @@ To export as CSV where the delimiter is ``|``
 
 .. code-block:: python
 
-    python manage.py export_models -a ambition_subject -p /ambition/export 
-    
+    python manage.py export_models -a ambition_subject -p /ambition/export
+
 To export as STATA ``dta``:
 
 .. code-block:: python
 
-    python manage.py export_models -a ambition_subject -f stata -p /ambition/export 
+    python manage.py export_models -a ambition_subject -f stata -p /ambition/export
 
 To export encrypted fields as well:
 
@@ -106,7 +106,7 @@ Using ``model_to_dataframe``
     csv_path = '/Users/erikvw/Documents/ambition/export/'
     date_format = '%Y-%m-%d'
     sep = '|'
-    
+
     for model_name in get_model_names(
             app_label=app_label,
             # with_columns=with_columns,
@@ -120,9 +120,9 @@ Using ``model_to_dataframe``
             export_folder=csv_path,
         )
         exported = exporter.to_csv(dataframe=m.dataframe)
-        
-        
-        
+
+
+
 
 
 
