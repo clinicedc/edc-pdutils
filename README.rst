@@ -9,30 +9,77 @@ Use pandas with the Edc
 Using the management command to export to CSV and STATA
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+The ``export_models`` management command requires you to log in with an account that has export permissions.
+
+The basic command requires an app_label (``-a``) and a path to the export folder (``-p``)
+
+By default, the export format is CSV but delimited using the pipe delimiter, ``|``.
+
+Export one or more modules
+==========================
+
+.. code-block:: python
+
+    python manage.py export_models -a ambition_subject -p /ambition/export
+
+
+The ``-a`` excepts more than one app_label
+
+.. code-block:: python
+
+    python manage.py export_models -a ambition_subject,ambition_prn,ambition_ae -p /ambition/export
+
+
+Export data in CSV format or STATA format
+==========================================
 To export as CSV where the delimiter is ``|``
 
 .. code-block:: python
 
     python manage.py export_models -a ambition_subject -p /ambition/export
 
-To export as STATA ``dta``:
+
+To export as STATA ``dta`` use option ``-f stata``
 
 .. code-block:: python
 
-    python manage.py export_models -a ambition_subject -f stata -p /ambition/export
+    python manage.py export_models -a ambition_subject -p /ambition/export -f stata
 
-To export encrypted fields as well:
 
-.. code-block:: python
-
-    python manage.py export_models -a ambition_subject -f stata -p /ambition/export  --decrypt
-
-To export using a simpler filename that drops the tablename app_label prefix and does not include a datestamp suffix:
+Export encrypted data
+=====================
+To export encrypted fields include option ``--decrypt``:
 
 .. code-block:: python
 
-    python manage.py export_models -a ambition_subject -f stata -p /ambition/export  --use_simple_filename
+    python manage.py export_models -a ambition_subject -p /ambition/export  --decrypt
 
+
+**Note:** If using the ``--decrypt`` option, the user account will need ``PII_EXPORT`` permissions
+
+Export with a simple file name
+==============================
+
+To export using a simpler filename that drops the tablename app_label prefix and does not include a datestamp suffix.
+
+Add option ``--use_simple_filename``.
+
+.. code-block:: python
+
+    python manage.py export_models -a ambition_subject -p /ambition/export  --use_simple_filename
+
+Export for a country only
+=========================
+
+Add option ``--country``.
+
+.. code-block:: python
+
+    python manage.py export_models -a ambition_subject -p /ambition/export  --country="uganda"
+
+
+
+_________________________________
 
 Export manually
 +++++++++++++++
@@ -120,11 +167,6 @@ Using ``model_to_dataframe``
             export_folder=csv_path,
         )
         exported = exporter.to_csv(dataframe=m.dataframe)
-
-
-
-
-
 
 
 Settings
