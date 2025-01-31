@@ -140,34 +140,6 @@ To export INLINE data for any CRF configured with an inline, for example:
     exporter = MyCsvCrfInlineTablesExporter()
     exporter.to_csv(date_format=date_format, delimiter=sep)
 
-Using ``model_to_dataframe``
-++++++++++++++++++++++++++++
-
-.. code-block:: python
-
-    from edc_pdutils.model_to_dataframe import ModelToDataframe
-    from edc_pdutils.utils import get_model_names
-    from edc_pdutils.df_exporters.csv_exporter import CsvExporter
-
-    app_label = 'ambition_subject'
-    csv_path = '/Users/erikvw/Documents/ambition/export/'
-    date_format = '%Y-%m-%d'
-    sep = '|'
-
-    for model_name in get_model_names(
-            app_label=app_label,
-            # with_columns=with_columns,
-            # without_columns=without_columns,
-        ):
-        m = ModelToDataframe(model=model_name)
-        exporter = CsvExporter(
-            data_label=model_name,
-            date_format=date_format,
-            delimiter=sep,
-            export_folder=csv_path,
-        )
-        exported = exporter.to_csv(dataframe=m.dataframe)
-
 
 Settings
 ========
